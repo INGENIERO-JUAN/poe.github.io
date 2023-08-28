@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUZLE</title>
+
+     <!-- Agregar hoja de estilo de Bootstrap -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">-->
+
+     <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+    
+
+   <input type="button" value="inicio" id="inicio" onclick="inicio()" class="btn btn-primary"><BR></BR>
+
+   <div class="container">
+
+        <div class="row">
+        <input type="button" value="" id="1,1" onclick="mover(this.value, this.id)" class="btn btn-puzzle"> <!--pon3mow this.value y this.id para que la funcion mover() reconozca los parametros del boton-->
+        <input type="button" value="" id="1,2" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        <input type="button" value="" id="1,3" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        </div>
+    
+        <div class="row">
+        <input type="button" value="" id="2,1" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        <input type="button" value="" id="2,2" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        <input type="button" value="" id="2,3" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        </div>
+        <div class="row">
+        <input type="button" value="" id="3,1" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        <input type="button" value="" id="3,2" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        <input type="button" value="" id="3,3" onclick="mover(this.value, this.id)" class="btn btn-puzzle">
+        </div>
+  
+    
+   <div id="resultado"></div><br>
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>
