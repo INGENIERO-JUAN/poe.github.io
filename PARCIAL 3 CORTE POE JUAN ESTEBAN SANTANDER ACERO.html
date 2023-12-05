@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PARCIAL POE JUAN ESTEBAN SANTANDER ACERO TDS III</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+
+</head>
+<body>
+
+<div class="container"></div>
+
+
+<h1>ING. JUAN ESTEBAN SANTANDER ACERO</h1>
+
+ 
+  <div id="app-saludo">
+    <saludo-component></saludo-component>
+  </div>
+<br>
+  <div id="app-vinculacion">
+    <input type="text" v-model="mensaje" />
+    <saludo-component :mensaje="mensaje"></saludo-component>
+  </div>
+
+
+  </div>
+<br>
+  <div id="app-eventos-frutas">
+    <lista-frutas-eventos></lista-frutas-eventos>
+  </div>
+
+ <br>
+  <div id="app-contador">
+    <contador-component></contador-component>
+  </div>
+
+  <script>
+    // Componente Saludo
+    const SaludoComponent = {
+      props: ['mensaje'],
+      template: '<p>{{ mensaje }}</p>',
+    };
+
+    
+
+   // Manejo de Eventos: ListaFrutas 
+  const ListaFrutasEventosComponent = {
+    data() {
+      return {
+        frutas: [
+          { nombre: 'Manzana', imagen: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEN2HTnHvwKx2GLhml8e7hvhd2g-i0htHp4c81VkXb77cU7Rwh7Nvc0toJR7uuxzsvKhXexnWAzx_KaA8lceEeoAlxyE1xjfg-X34uizDT7n1Rc8gADtcR3zN2eNnzCGB98SN-62a7-KAVBr_mFg-Sg8LcSSV88tHO20LzHTvcL3tun623s7tS9sd71RA/s320/2823b0c1-7020-4dd8-a80c-7b1fda668d0f.jpeg' },
+          { nombre: 'Banana', imagen: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi-jLjQZD-LW9wP5RHlNg7mR7mb2zrVs-U0bjC_ESrMf4aYBC7DXX4V1i-g9fECk4ip8oymBYUktTGagzGv2t_UI_RlpvzgdCLWb43BXyB1wNwjfnojTFEE-jeLKhJ-RZqxRJS7VPei-ioQ5pOfuAsh2FeRKPfk9XRe0K2U5SKMudeUPdrHRLDuFH7-cuk/s320/7fa67bcc-c16b-416b-ba70-9eb83c75b035.jpeg' },
+          { nombre: 'Uva', imagen: 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyC1VU2H_0ExmL5kvlocka3dQ0myX0A9i3Bv2prHTlf6GfFMWTixAWxaEs8KpyzCD8w51HF2ZNYiEQQzhvZcKI-EwhgyqL24N3zVJmdicRpLgEKv-Xyk3lH2hvzcJLTsIYkHF-RMCDHNJJQ7zOpNGc3lMCb-jDmUjEhETR1sr770Ne2OJzaO2ATbin93I/s320/5b4f2b2f-f2c9-490e-86c0-904bf9cbd7a6.jpeg' },
+        ],
+      };
+    },
+    methods: {
+      eliminarFruta(index) {
+        this.frutas.splice(index, 1);
+      },
+    },
+    template: `
+      <ul>
+        <li v-for="(fruta, index) in frutas">
+          <img @click="eliminarFruta(index)" :src="fruta.imagen" alt="imagen de la fruta" width="100" height="100">
+          {{ fruta.nombre }}
+        </li>
+      </ul>
+    `,
+  };
+
+
+    // Componente Contador
+    const ContadorComponent = {
+      data() {
+        return {
+          contador: 0,
+        };
+      },
+      methods: {
+        incrementar() {
+          this.contador++;
+        },
+        decrementar() {
+          this.contador--;
+        },
+      },
+      template: `
+        <div>
+          <p>Contador: {{ contador }}</p>
+          <button @click="incrementar">Incrementar</button>
+          <button @click="decrementar">Decrementar</button>
+          <p>{{ contador > 0 ? 'El contador es positivo' : (contador < 0 ? 'El contador es negativo' : 'El contador es cero') }}</p>
+        </div>
+      `,
+    };
+
+    // Instancias Vue
+    Vue.createApp({
+      components: {
+        'saludo-component': SaludoComponent,
+        'lista-frutas-eventos': ListaFrutasEventosComponent,
+        'contador-component': ContadorComponent,
+      },
+      data() {
+        return {
+          mensaje: " Hola, Mundo",
+        };
+      },
+    }).mount('#app-saludo');
+
+    Vue.createApp({
+      components: {
+        'saludo-component': SaludoComponent,
+      },
+      data() {
+        return {
+          mensaje: 'Hola, Mundo',
+        };
+      },
+    }).mount('#app-vinculacion');
+
+   
+    Vue.createApp({
+      components: {
+        'lista-frutas-eventos': ListaFrutasEventosComponent,
+      },
+    }).mount('#app-eventos-frutas');
+
+    Vue.createApp({
+      components: {
+        'contador-component': ContadorComponent,
+      },
+    }).mount('#app-contador');
+  </script>
+
+</body>
+</html>
